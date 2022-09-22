@@ -1,0 +1,106 @@
+<!-- app of header page -->
+<app-header [heading]="heading"></app-header>
+
+<div class="bg mat-elevation-z4">
+  <div class="row" style="padding: 10px">
+    <!-- search field -->
+    <mat-form-field class="col-sm-10" appearance="outline">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="filter(filterValue)"
+        [(ngModel)]="filterValue"
+        placeholder="Enter search word.."
+      />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <div class="col">
+      <button mat-raised-button (click)="Search()" class="primary-button">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="listIcons">
+      <!-- view icon -->
+      <i class="material-icons icon-size {{ viewColor }}" (click)="views()"
+        >grid_view</i
+      >
+      <!-- list icon -->
+      <i class="material-icons icon-size {{ listColor }}" (click)="list()"
+        >format_list_bulleted</i
+      >
+    </div>
+  </div>
+
+  <!-- cards -->
+  <span *ngIf="view">
+       <!-- hide and showing div based on need -->
+    <div class="scroll">
+      <div class="viewCards">
+        <div class="user-card" *ngFor="let user of users">
+          <!-- iterating over users array through *ngFor directive -->
+          <mat-card>
+            <div class="row">
+              <div class="col-md-4">
+                <img mat-card-image class="img-card" [src]="user.avatar_url" />
+              </div>
+              <div class="col-md-8">
+                <h4><strong>ID</strong> : {{ user.id }}</h4>
+                <h4><strong>User name</strong> : {{ user.login }}</h4>
+                <h4><strong>Score</strong> : {{ user.score }}</h4>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </span>
+
+  <!-- mat-table list for users -->
+  <span *ngIf="lists"> 
+     <!-- hide and showing div based on need -->
+    <div class="scroll">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-table tables mat-elevation-z4"
+      >
+        <ng-container matColumnDef="avatar_url">
+          <th mat-header-cell *matHeaderCellDef>User</th>
+          <td mat-cell *matCellDef="let element">
+            <img class="img-table" [src]="element.avatar_url" />
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.id }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="login">
+          <th mat-header-cell *matHeaderCellDef>User name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.login }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="score">
+          <th mat-header-cell *matHeaderCellDef>Score</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.score | number }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          class="matrow"
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table></div
+  ></span>
+</div>

@@ -1,0 +1,27 @@
+.map {
+    width: 100%;
+    height: 250px;
+  }
+
+  .mat-card{
+    margin-top: 10px;
+  }
+
+  .list{
+    overflow: scroll;
+    height: 50vh;
+  }
+
+  .float-right{
+    color: white;
+    background-color: #1569e1
+  }
+
+  .listcard:hover{
+    background-color: #629ae8 ;
+    color: white;
+    
+  }
+
+
+

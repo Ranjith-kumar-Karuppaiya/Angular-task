@@ -1,0 +1,82 @@
+<!-- app-header page -->
+<app-header [heading]="heading" [subheading]="subheading"></app-header>
+<div class="bg mat-elevation-z4">
+  <!-- openlayers map -->
+  <div id="map" (click)="GetLatLon($event)" class="map"></div>
+  &nbsp;
+<!-- for list edit details -->
+  <div class="row">
+    <div class="col-md-6 list">
+      <h2><strong>List</strong></h2>
+      <mat-card class="listcard" *ngFor="let item of Location_data">
+        <a (click)="EditDetails(item)">
+          <mat-card-title> {{ item.name }}</mat-card-title>
+          <mat-card-subtitle>{{ item.description }} </mat-card-subtitle></a
+        >
+      </mat-card>
+    </div>
+<!-- update map data form -->
+    <div class="col-md-6">
+      <form [formGroup]="UpdateMapDataForm" novalidate>
+        <!-- Edit name field -->
+        <mat-form-field appearance="outline" class="example-full-width">
+          <input
+            matInput
+            placeholder="Edit Name"
+            formControlName="Name"
+            type="text"
+          />
+        </mat-form-field>
+     <!-- latitude field -->
+        <div class="row">
+          <div class="col-sm-6">
+            <mat-form-field
+              disabled
+              appearance="outline"
+              class="example-full-width"
+            >
+              <input
+                matInput
+                placeholder="Latitude"
+                formControlName="Latitude"
+                type="text"
+              />
+            </mat-form-field>
+          </div>
+          <!-- longitude field -->
+          <div class="col-sm-6">
+            <mat-form-field
+              disabled
+              appearance="outline"
+              class="example-full-width"
+            >
+              <input
+                matInput
+                placeholder="Longitude"
+                formControlName="Longitude"
+                type="text"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+       <!-- Edit description field -->
+        <mat-form-field appearance="outline" class="example-full-width">
+          <textarea
+            matInput
+            maxlength="300"
+            formControlName="Description"
+            placeholder="Edit Description"
+          ></textarea>
+        </mat-form-field>
+      </form>
+       <!-- update button -->
+      <button
+        mat-raised-button
+        class="float-right primary-button"
+        (click)="UpdateDetails()"
+      >
+        Update
+      </button>
+    </div>
+  </div>
+</div>

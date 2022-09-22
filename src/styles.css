@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* app-header */
+.header-box{
+    padding:auto;
+}
+
+.example-full-width{
+    width: 100%;
+}
+
+
+.bg{
+    padding: 10px;
+    background-color: white;
+  
+  }
+.scroll{
+    height: 80vh;
+     overflow:scroll
+}
+.primary-button{
+    color: white;
+    background-color: #1569e1;
+    height: 51px;
+    width: 134px;
+}
+.my-class .mat-dialog-container{
+    background-color: #4d504e ;
+    /* Other CSS Styles */
+}
+
+.save-button{
+    color: white;
+    background-color: #1569e1;
+    height: 41px;
+    width: 100px;
+}
