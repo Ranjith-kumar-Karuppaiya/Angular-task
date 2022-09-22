@@ -69,7 +69,7 @@ constructor(public fb:FormBuilder,public dialog: MatDialog){
   this.lonlat = olProj.transform(coordinate, 'EPSG:3857', 'EPSG:4326');
   const dialogRef = this.dialog.open(AddMarkerDialogComponent, {
     disableClose: false,
-    height: '40%',
+    height: '42%',
     width: '30%',
     panelClass: 'my-class' 
   });
